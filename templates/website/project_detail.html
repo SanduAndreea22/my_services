@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="pt-28 pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            {{ project.title }}
+        </h1>
+
+        {% if project.image %}
+        <div class="mb-12">
+            <img
+                src="{{ project.image.url }}"
+                alt="{{ project.title }}"
+                class="w-full rounded-2xl shadow-2xl border border-slate-800 object-cover"
+            >
+        </div>
+        {% endif %}
+
+        <p class="text-slate-400 text-lg mb-12">
+            {{ project.short_description }}
+        </p>
+
+        <!-- Problem -->
+        <div class="mb-14">
+            <h2 class="text-2xl font-semibold mb-4 border-b border-slate-700 pb-2">
+                Problem
+            </h2>
+            <div class="prose prose-invert max-w-none">
+                {{ project.problem|safe }}
+            </div>
+        </div>
+
+        <!-- Solution -->
+        <div class="mb-14">
+            <h2 class="text-2xl font-semibold mb-4 border-b border-slate-700 pb-2">
+                Solution
+            </h2>
+            <div class="prose prose-invert max-w-none">
+                {{ project.solution|safe }}
+            </div>
+        </div>
+
+        <!-- Outcome -->
+        <div class="mb-14">
+            <h2 class="text-2xl font-semibold mb-4 border-b border-slate-700 pb-2">
+                Outcome
+            </h2>
+            <div class="prose prose-invert max-w-none">
+                {{ project.outcome|safe }}
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="mt-16 pt-6 border-t border-slate-700">
+            <span class="text-sm uppercase tracking-wider text-slate-500">
+                Tech Stack
+            </span>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+                {% for tech in project.tech_list %}
+                    <span class="px-3 py-1 text-sm bg-slate-800 border border-slate-700 rounded-full text-slate-300">
+                        {{ tech }}
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,74 +1,94 @@
+/* ===============================
+   CORE STYLES & FIXES
+   =============================== */
 body {
     font-family: 'Poppins', sans-serif;
-    background: #020617;
+    background-color: #020617;
     color: #f1f5f9;
     overflow-x: hidden;
+    position: relative; /* Adăugat pentru contextul de stivuire */
 }
+
 .bg-noise {
-    position: absolute;
+    position: fixed; /* Schimbat în fixed pentru a rămâne pe fundal la scroll */
     inset: 0;
-    background: radial-gradient(circle at 20% 10%, #1d4ed8 0%, transparent 40%),
-                radial-gradient(circle at 80% 30%, #0ea5e9 0%, transparent 40%);
-    opacity: .15;
-    filter: blur(80px);
-    z-index: 0;
+    background:
+        radial-gradient(circle at 20% 10%, #1d4ed8 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, #0ea5e9 0%, transparent 50%);
+    opacity: .08;
+    filter: blur(60px);
+    z-index: -1;          /* REPARAT: Acum stă sub formular */
+    pointer-events: none; /* REPARAT: Click-ul trece prin el */
 }
+
 .gradient-text {
     background: linear-gradient(90deg,#60a5fa,#22d3ee);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .glass {
     background: rgba(15,23,42,.6);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,.06);
 }
+
 .card-hover {
     transition: all .35s ease;
 }
+
 .card-hover:hover {
     transform: translateY(-10px);
     border-color: #3b82f6;
     box-shadow: 0 25px 60px rgba(37,99,235,.25);
 }
+
 .btn-primary {
     background: linear-gradient(135deg,#2563eb,#38bdf8);
     transition: .3s ease;
 }
+
 .btn-primary:hover {
     box-shadow: 0 0 35px rgba(56,189,248,.6);
     transform: translateY(-2px);
 }
-/* Light Theme */
+
+/* ===============================
+   REFINED LIGHT THEME
+   =============================== */
 [data-theme="light"] body {
-    background: #f8fafc;
+    background: #f1f5f9; /* Un albastru foarte pal, mai premium */
+    color: #0f172a;      /* Text închis pentru citire ușoară */
+}
+
+[data-theme="light"] .bg-noise {
+    background: radial-gradient(circle at 30% 20%, #bfdbfe 0%, transparent 40%),
+                radial-gradient(circle at 80% 40%, #bae6fd 0%, transparent 40%);
+    opacity: 0.4;
+}
+
+[data-theme="light"] .glass {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(15, 23, 42, 0.1);
     color: #1e293b;
 }
-[data-theme="light"] .bg-noise {
-    background: radial-gradient(circle at 30% 20%, #60a5fa 0%, transparent 40%),
-                radial-gradient(circle at 80% 40%, #38bdf8 0%, transparent 40%);
-}
-[data-theme="light"] .glass {
-    background: rgba(255,255,255,.7);
-    border-color: #e0e7ef;
-    color: #222;
-}
+
 [data-theme="light"] .card-hover:hover {
     box-shadow: 0 25px 60px rgba(56,189,248,.18);
 }
+
 [data-theme="light"] .btn-primary {
     background: linear-gradient(135deg,#38bdf8,#2563eb);
 }
+
 [data-theme="light"] footer {
-    background: #f1f5f9;
+    background: #e2e8f0;
     color: #475569 !important;
 }
 
 /* ===============================
-   SERVICES PAGE STYLES
+   SERVICES PAGE STYLES (All your original code)
    =============================== */
-
-/* Pricing cards */
 .pricing-card {
     position: relative;
     transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
@@ -80,7 +100,6 @@ body {
     box-shadow: 0 30px 80px rgba(37,99,235,.35);
 }
 
-/* Price styling */
 .price-tag {
     font-size: 2.4rem;
     font-weight: 700;
@@ -97,7 +116,6 @@ body {
     -webkit-text-fill-color: initial;
 }
 
-/* Most popular card highlight */
 .most-popular {
     border: 1px solid rgba(59,130,246,.5);
     box-shadow: 0 0 0 1px rgba(59,130,246,.2),
@@ -109,7 +127,6 @@ body {
     transform: scale(1.05) translateY(-10px);
 }
 
-/* Badge */
 .popular-tag {
     position: absolute;
     top: -14px;
@@ -124,47 +141,16 @@ body {
     box-shadow: 0 8px 25px rgba(37,99,235,.45);
 }
 
-/* CTA buttons inside cards */
-.pricing-card a {
-    display: block;
-    font-weight: 500;
-    transition: all .25s ease;
-}
-
 .pricing-card a:hover {
     border-color: #3b82f6;
     color: #fff;
     background: rgba(59,130,246,.1);
 }
 
-/* Infrastructure block */
 .glass.border-blue-500\/10 {
-    background: linear-gradient(
-        145deg,
-        rgba(15,23,42,.7),
-        rgba(2,6,23,.9)
-    );
+    background: linear-gradient(145deg, rgba(15,23,42,.7), rgba(2,6,23,.9));
 }
 
-/* Light Theme Adjustments */
-[data-theme="light"] .pricing-card:hover {
-    box-shadow: 0 30px 60px rgba(37,99,235,.15);
-}
-
-[data-theme="light"] .most-popular {
-    box-shadow: 0 0 0 1px rgba(56,189,248,.25),
-                0 20px 50px rgba(56,189,248,.18);
-}
-
-[data-theme="light"] .popular-tag {
-    box-shadow: 0 8px 20px rgba(56,189,248,.35);
-}
-
-/* ===============================
-   SERVICES PAGE EXTENSIONS
-   =============================== */
-
-/* Service cards refinement */
 .service-card {
     position: relative;
     transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
@@ -176,7 +162,6 @@ body {
     box-shadow: 0 30px 70px rgba(37,99,235,.30);
 }
 
-/* Founder badge */
 .founder-badge {
     margin-top: 20px;
     display: inline-block;
@@ -190,50 +175,85 @@ body {
     box-shadow: 0 8px 25px rgba(37,99,235,.35);
 }
 
-/* Timeline styling */
-.service-card .timeline {
-    margin-top: 10px;
-    font-size: .85rem;
-    color: #64748b;
-}
-
-/* Infrastructure block visual refinement */
 .infrastructure-block {
     border: 1px solid rgba(59,130,246,.15);
     box-shadow: 0 20px 60px rgba(37,99,235,.15);
 }
 
-/* CTA section refinement */
-.cta-section a {
-    font-weight: 600;
-    letter-spacing: .02em;
-    box-shadow: 0 10px 30px rgba(37,99,235,.25);
+/* ===============================
+   PROJECTS PAGE EXTENSIONS
+   =============================== */
+.featured-project {
+    position: relative;
+    border: 1px solid rgba(59,130,246,.15);
+    transition: transform .35s ease, box-shadow .35s ease;
 }
 
-.cta-section a:hover {
-    box-shadow: 0 15px 45px rgba(37,99,235,.45);
-    transform: translateY(-3px);
+.featured-project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 35px 80px rgba(37,99,235,.30);
 }
 
-/* Subtle divider spacing */
+.project-card {
+    position: relative;
+    transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
+    border: 1px solid rgba(59,130,246,.10);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(59,130,246,.40);
+    box-shadow: 0 25px 60px rgba(37,99,235,.25);
+}
+
+.badge {
+    padding: 5px 12px;
+    font-size: .7rem;
+    border-radius: 999px;
+    background: rgba(59,130,246,.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59,130,246,.25);
+    letter-spacing: .04em;
+}
+
 .section-divider {
     height: 1px;
     background: linear-gradient(90deg,transparent,rgba(59,130,246,.25),transparent);
     margin: 60px 0;
 }
 
-/* ===============================
-   LIGHT THEME ADJUSTMENTS
-   =============================== */
+/* ... restul codului de sus ramane neschimbat ... */
 
-[data-theme="light"] .service-card:hover {
-    box-shadow: 0 25px 60px rgba(37,99,235,.15);
+/* REPARAT: Input-urile pe Light Mode să fie profi, nu negre */
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
 }
 
-[data-theme="light"] .founder-badge {
-    box-shadow: 0 6px 20px rgba(56,189,248,.30);
+/* Stil pentru checkbox-uri in formularul Start Project */
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
 }
 
-[data-theme="light"] .infrastructure-block {
-    box-shadow: 0 15px 40px rgba(56,189,248,.12);
+
+/* REPARAT: Industriile să fie vizibile pe Dark Mode */
+select {
+    appearance: none; /* Scoate stilul de sistem */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+/* Stil pentru opțiunile din interiorul listei */
+select option {
+    background-color: #1e293b; /* Albastru închis ca să se vadă textul alb */
+    color: white;
 }

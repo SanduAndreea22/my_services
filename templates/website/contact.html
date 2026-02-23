@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-</body>
-</html>
+<section class="pt-28 pb-24">
+    <div class="max-w-2xl mx-auto px-6">
+
+
+        <!-- Header -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                Start a Conversation
+            </h1>
+
+            <p class="text-slate-400 text-lg leading-relaxed">
+                Have a question, idea, or quick inquiry?
+                Send a message and I’ll get back to you shortly.
+            </p>
+        </div>
+
+        <!-- Success Message -->
+        {% if success %}
+            <div class="mb-8 p-4 rounded-lg border border-green-600 bg-green-600/10 text-green-400 text-center">
+                Your message has been sent successfully.
+            </div>
+        {% endif %}
+
+        <!-- Contact Form -->
+        <form method="POST" class="space-y-6 mb-16">
+            {% csrf_token %}
+
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">Name</label>
+                {{ form.name }}
+            </div>
+
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">Email</label>
+                {{ form.email }}
+            </div>
+
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">Message</label>
+                {{ form.message }}
+            </div>
+
+            <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 transition rounded-lg py-3 font-semibold">
+                Send Message
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="border-t border-slate-800 pt-12 text-center">
+
+            <h2 class="text-2xl font-semibold mb-4">
+                Planning a larger project?
+            </h2>
+
+            <p class="text-slate-400 mb-8 leading-relaxed">
+                If you're looking to build a full application, automate workflows,
+                or develop a custom platform, use the structured project form instead.
+            </p>
+
+            <a href="{% url 'start_project' %}"
+               class="inline-block bg-slate-800 hover:bg-slate-700 transition px-10 py-3 rounded-lg font-semibold">
+                Start a Project →
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

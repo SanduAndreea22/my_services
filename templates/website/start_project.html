@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="pt-28 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+
+        <!-- Header -->
+        <div class="mb-14">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                Let’s Turn Your Workflow Into Software
+            </h1>
+
+            <p class="text-slate-400 text-lg leading-relaxed">
+                If your business relies on manual processes, spreadsheets,
+                or repetitive tasks, we can build something better.
+                Fill out the form below and I’ll respond within 24 hours.
+            </p>
+        </div>
+
+        <!-- Success Message -->
+        {% if success %}
+            <div class="mb-8 p-4 rounded-lg border border-green-600 bg-green-600/10 text-green-400">
+                Your project inquiry has been received. I’ll get back to you shortly.
+            </div>
+        {% endif %}
+
+        <!-- Form -->
+        <form method="POST" class="space-y-8">
+            {% csrf_token %}
+
+            <!-- Name -->
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">Name</label>
+                {{ form.name }}
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">Email</label>
+                {{ form.email }}
+            </div>
+
+            <!-- Industry -->
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">
+                    If you’re ordering for a business, what’s your industry?
+                </label>
+                {{ form.industry }}
+            </div>
+
+            <!-- Project Description -->
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">
+                    Please describe your project in detail.
+                </label>
+                {{ form.project_description }}
+            </div>
+
+            <!-- Hosting -->
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">
+                    Do you already have hosting and a domain?
+                </label>
+                {{ form.hosting_info }}
+            </div>
+
+            <!-- Deadline -->
+            <div>
+                <label class="block mb-2 text-sm text-slate-400">
+                    Is there a specific deadline or communication preference?
+                </label>
+                {{ form.deadline_communication }}
+            </div>
+
+            <!-- Features -->
+            <div>
+                <label class="block mb-3 text-sm text-slate-400">
+                    Will your project require any of the following?
+                </label>
+
+                <div class="space-y-2 text-slate-300">
+                    {{ form.required_features }}
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 transition rounded-lg py-3 font-semibold">
+                Start the Project
+            </button>
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

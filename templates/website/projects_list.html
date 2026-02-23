@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-28 pb-20 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+        <h1 class="text-4xl font-bold mb-6">
+            Production-Ready Systems
+        </h1>
+        <p class="text-slate-400">
+            Systems built to automate workflows and structure business operations.
+        </p>
+    </div>
+</section>
+
+
+<!-- Featured Project -->
+{% if featured %}
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="glass rounded-2xl p-10 grid md:grid-cols-2 gap-10">
+
+            <div>
+                <div class="text-sm text-indigo-400 mb-3">Featured</div>
+
+                <h2 class="text-3xl font-bold mb-6">
+                    {{ featured.title }}
+                </h2>
+
+                <p class="text-slate-400 mb-6">
+                    {{ featured.short_description }}
+                </p>
+
+                <div class="flex gap-6 items-center">
+                    <a href="{% url 'project_detail' featured.slug %}"
+                       class="text-indigo-400">
+                        View Case →
+                    </a>
+
+                    {% if featured.link %}
+                    <a href="{{ featured.link }}"
+                       target="_blank"
+                       class="text-sm text-slate-400">
+                        Live →
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if featured.image %}
+            <div>
+                <img src="{{ featured.image.url }}" class="rounded-xl">
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!-- Projects Grid -->
+<section class="pb-28">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        {% for project in projects %}
+        <div class="glass p-8 rounded-2xl card-hover">
+
+            <h3 class="text-xl font-semibold mb-3">
+                {{ project.title }}
+            </h3>
+
+            <p class="text-slate-400 text-sm mb-6">
+                {{ project.short_description }}
+            </p>
+
+            <div class="flex gap-4 items-center">
+
+                <a href="{% url 'project_detail' project.slug %}"
+                   class="text-indigo-400">
+                    View Case →
+                </a>
+
+                {% if project.link %}
+                <a href="{{ project.link }}"
+                   target="_blank"
+                   class="text-sm text-slate-400">
+                    Live →
+                </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
