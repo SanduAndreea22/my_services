@@ -1,0 +1,239 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #020617;
+    color: #f1f5f9;
+    overflow-x: hidden;
+}
+.bg-noise {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 10%, #1d4ed8 0%, transparent 40%),
+                radial-gradient(circle at 80% 30%, #0ea5e9 0%, transparent 40%);
+    opacity: .15;
+    filter: blur(80px);
+    z-index: 0;
+}
+.gradient-text {
+    background: linear-gradient(90deg,#60a5fa,#22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.glass {
+    background: rgba(15,23,42,.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.06);
+}
+.card-hover {
+    transition: all .35s ease;
+}
+.card-hover:hover {
+    transform: translateY(-10px);
+    border-color: #3b82f6;
+    box-shadow: 0 25px 60px rgba(37,99,235,.25);
+}
+.btn-primary {
+    background: linear-gradient(135deg,#2563eb,#38bdf8);
+    transition: .3s ease;
+}
+.btn-primary:hover {
+    box-shadow: 0 0 35px rgba(56,189,248,.6);
+    transform: translateY(-2px);
+}
+/* Light Theme */
+[data-theme="light"] body {
+    background: #f8fafc;
+    color: #1e293b;
+}
+[data-theme="light"] .bg-noise {
+    background: radial-gradient(circle at 30% 20%, #60a5fa 0%, transparent 40%),
+                radial-gradient(circle at 80% 40%, #38bdf8 0%, transparent 40%);
+}
+[data-theme="light"] .glass {
+    background: rgba(255,255,255,.7);
+    border-color: #e0e7ef;
+    color: #222;
+}
+[data-theme="light"] .card-hover:hover {
+    box-shadow: 0 25px 60px rgba(56,189,248,.18);
+}
+[data-theme="light"] .btn-primary {
+    background: linear-gradient(135deg,#38bdf8,#2563eb);
+}
+[data-theme="light"] footer {
+    background: #f1f5f9;
+    color: #475569 !important;
+}
+
+/* ===============================
+   SERVICES PAGE STYLES
+   =============================== */
+
+/* Pricing cards */
+.pricing-card {
+    position: relative;
+    transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-12px) scale(1.01);
+    border-color: rgba(59,130,246,.6);
+    box-shadow: 0 30px 80px rgba(37,99,235,.35);
+}
+
+/* Price styling */
+.price-tag {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg,#60a5fa,#22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.price-tag span {
+    font-size: .9rem;
+    color: #64748b;
+    margin-left: 6px;
+    -webkit-text-fill-color: initial;
+}
+
+/* Most popular card highlight */
+.most-popular {
+    border: 1px solid rgba(59,130,246,.5);
+    box-shadow: 0 0 0 1px rgba(59,130,246,.2),
+                0 25px 80px rgba(37,99,235,.25);
+    transform: scale(1.03);
+}
+
+.most-popular:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+/* Badge */
+.popular-tag {
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg,#2563eb,#38bdf8);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(37,99,235,.45);
+}
+
+/* CTA buttons inside cards */
+.pricing-card a {
+    display: block;
+    font-weight: 500;
+    transition: all .25s ease;
+}
+
+.pricing-card a:hover {
+    border-color: #3b82f6;
+    color: #fff;
+    background: rgba(59,130,246,.1);
+}
+
+/* Infrastructure block */
+.glass.border-blue-500\/10 {
+    background: linear-gradient(
+        145deg,
+        rgba(15,23,42,.7),
+        rgba(2,6,23,.9)
+    );
+}
+
+/* Light Theme Adjustments */
+[data-theme="light"] .pricing-card:hover {
+    box-shadow: 0 30px 60px rgba(37,99,235,.15);
+}
+
+[data-theme="light"] .most-popular {
+    box-shadow: 0 0 0 1px rgba(56,189,248,.25),
+                0 20px 50px rgba(56,189,248,.18);
+}
+
+[data-theme="light"] .popular-tag {
+    box-shadow: 0 8px 20px rgba(56,189,248,.35);
+}
+
+/* ===============================
+   SERVICES PAGE EXTENSIONS
+   =============================== */
+
+/* Service cards refinement */
+.service-card {
+    position: relative;
+    transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(59,130,246,.5);
+    box-shadow: 0 30px 70px rgba(37,99,235,.30);
+}
+
+/* Founder badge */
+.founder-badge {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 8px 18px;
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    background: linear-gradient(135deg,#1e40af,#0ea5e9);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(37,99,235,.35);
+}
+
+/* Timeline styling */
+.service-card .timeline {
+    margin-top: 10px;
+    font-size: .85rem;
+    color: #64748b;
+}
+
+/* Infrastructure block visual refinement */
+.infrastructure-block {
+    border: 1px solid rgba(59,130,246,.15);
+    box-shadow: 0 20px 60px rgba(37,99,235,.15);
+}
+
+/* CTA section refinement */
+.cta-section a {
+    font-weight: 600;
+    letter-spacing: .02em;
+    box-shadow: 0 10px 30px rgba(37,99,235,.25);
+}
+
+.cta-section a:hover {
+    box-shadow: 0 15px 45px rgba(37,99,235,.45);
+    transform: translateY(-3px);
+}
+
+/* Subtle divider spacing */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg,transparent,rgba(59,130,246,.25),transparent);
+    margin: 60px 0;
+}
+
+/* ===============================
+   LIGHT THEME ADJUSTMENTS
+   =============================== */
+
+[data-theme="light"] .service-card:hover {
+    box-shadow: 0 25px 60px rgba(37,99,235,.15);
+}
+
+[data-theme="light"] .founder-badge {
+    box-shadow: 0 6px 20px rgba(56,189,248,.30);
+}
+
+[data-theme="light"] .infrastructure-block {
+    box-shadow: 0 15px 40px rgba(56,189,248,.12);
+}

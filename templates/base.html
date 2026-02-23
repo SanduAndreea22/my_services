@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-theme="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Andreea Sandu | Django Systems Developer{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'website/style.css' %}">
+</head>
+<body>
+<div class="bg-noise"></div>
+<!-- NAV -->
+<nav class="fixed w-full z-50 bg-slate-950/70 backdrop-blur border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="text-xl font-semibold tracking-wide">
+            Andreea<span class="text-blue-500">S.</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'projects' %}">Projects</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+            <a href="{% url 'reviews' %}">Reviews</a>
+            <a href="{% url 'contact' %}" class="btn-primary px-4 py-2 rounded-lg text-white">Contact</a>
+            <!-- Light/Dark Theme Toggle -->
+            <button id="theme-toggle" class="ml-4 p-2 rounded transition border border-slate-700 hover:bg-slate-800"
+                    aria-label="Comută tema">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </div>
+</nav>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer class="py-10 border-t border-slate-800 text-center text-slate-500 text-sm mt-10">
+    © 2026 Andreea Sandu — Django Systems Development
+</footer>
+<script src="{% static 'website/toggle-theme.js' %}"></script>
+</body>
+</html>
