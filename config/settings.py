@@ -1,15 +1,26 @@
 from pathlib import Path
-import os
 from dotenv import load_dotenv
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
+import os
+from django.contrib.auth.models import User
+from django.db import IntegrityError
 
-# ========================
-# SECURITY
-# ========================
+
+SUPER_USER = os.getenv('DJANGO_SUPERUSER_NAME')
+SUPER_PASS = os.getenv('DJANGO_SUPERUSER_PASSWORD')
+SUPER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
+
+if SUPER_USER and SUPER_PASS:
+    try:
+        if not User.objects.filter(username=SUPER_USER).exists():
+            User.objects.create_superuser(SUPER_USER, SUPER_EMAIL, SUPER_PASS)
+            print(f"Superuser {SUPER_USER} creat din ENV!")
+    except Exception as e:
+        print(f"Eroare la crearea superuser: {e}")
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
