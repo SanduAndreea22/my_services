@@ -50,3 +50,28 @@ class ContactForm(forms.ModelForm):
                 "class": "w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white"
             }),
         }
+
+from django import forms
+from .models import Review
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ["name", "company", "rating", "message"]
+
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "class": "w-full p-3 rounded-lg bg-slate-900 border border-slate-700"
+            }),
+            "company": forms.TextInput(attrs={
+                "class": "w-full p-3 rounded-lg bg-slate-900 border border-slate-700"
+            }),
+            "rating": forms.Select(attrs={
+                "class": "w-full p-3 rounded-lg bg-slate-900 border border-slate-700"
+            }),
+            "message": forms.Textarea(attrs={
+                "class": "w-full p-3 rounded-lg bg-slate-900 border border-slate-700",
+                "rows": 4
+            }),
+        }

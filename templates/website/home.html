@@ -19,10 +19,10 @@
                 and eliminate manual processes — giving businesses systems they can actually rely on.
             </p>
             <div class="flex gap-5">
-                <a href="#" class="btn-primary px-8 py-4 rounded-xl text-white font-medium">
+                <a href="{% url 'services' %}" class="btn-primary px-8 py-4 rounded-xl text-white font-medium">
                     View Services
                 </a>
-                <a href="#"
+                <a href="{% url 'projects' %}"
                    class="px-8 py-4 rounded-xl border border-slate-700 hover:bg-slate-800 transition">
                     See Projects
                 </a>
@@ -88,7 +88,7 @@
     <p class="text-slate-400 mb-10">
         If your business relies on manual processes, we can build something better.
     </p>
-    <a href="#" class="btn-primary px-12 py-5 rounded-xl text-white font-medium">
+    <a href="{% url 'contact' %}" class="btn-primary px-12 py-5 rounded-xl text-white font-medium">
         Start a Conversation
     </a>
 </section>

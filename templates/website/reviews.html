@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="pt-28 pb-24">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <h1 class="text-4xl font-bold text-center mb-16">
+            Client Reviews
+        </h1>
+
+        <!-- Reviews Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+
+            {% for review in reviews %}
+            <div class="glass p-8 rounded-2xl">
+
+                <div class="flex mb-4">
+                    {% for i in "12345"|make_list %}
+                        {% if forloop.counter <= review.rating %}
+                            <span class="text-yellow-400 text-lg">★</span>
+                        {% else %}
+                            <span class="text-slate-600 text-lg">★</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <p class="text-slate-400 mb-6">
+                    {{ review.message }}
+                </p>
+
+                <div class="font-semibold">
+                    {{ review.name }}
+                </div>
+
+                {% if review.company %}
+                <div class="text-sm text-slate-500">
+                    {{ review.company }}
+                </div>
+                {% endif %}
+
+            </div>
+            {% empty %}
+                <p class="text-slate-500">
+                    No reviews yet.
+                </p>
+            {% endfor %}
+
+        </div>
+
+        <!-- Review Form -->
+        <div class="max-w-2xl mx-auto">
+
+            <h2 class="text-2xl font-semibold mb-8 text-center">
+                Leave a Review
+            </h2>
+
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+
+                <div>
+                    <label class="block mb-2 text-sm text-slate-400">
+                        Name
+                    </label>
+                    {{ form.name }}
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm text-slate-400">
+                        Company (optional)
+                    </label>
+                    {{ form.company }}
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm text-slate-400">
+                        Rating
+                    </label>
+                    {{ form.rating }}
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm text-slate-400">
+                        Message
+                    </label>
+                    {{ form.message }}
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 transition rounded-lg py-3 font-semibold">
+                    Submit Review
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

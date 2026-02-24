@@ -77,5 +77,24 @@ def contact(request):
 def faq(request):
     return render(request, "website/faq.html")
 
+from django.shortcuts import render, redirect
+from .models import Review
+from .forms import ReviewForm
+
+
 def reviews(request):
-    return render(request, "website/reviews.html")
+
+    reviews = Review.objects.filter(is_approved=True)
+
+    form = ReviewForm()
+
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("reviews")
+
+    return render(request, "website/reviews.html", {
+        "reviews": reviews,
+        "form": form
+    })
