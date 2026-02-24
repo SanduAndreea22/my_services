@@ -6,27 +6,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 import os
-from django.contrib.auth.models import User
-from django.db import IntegrityError
-
-
+AUTH_USER_MODEL = 'auth.User'
 SUPER_USER = os.getenv('DJANGO_SUPERUSER_NAME')
 SUPER_PASS = os.getenv('DJANGO_SUPERUSER_PASSWORD')
 SUPER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
 
-if SUPER_USER and SUPER_PASS:
-    try:
-        if not User.objects.filter(username=SUPER_USER).exists():
-            User.objects.create_superuser(SUPER_USER, SUPER_EMAIL, SUPER_PASS)
-            print(f"Superuser {SUPER_USER} creat din ENV!")
-    except Exception as e:
-        print(f"Eroare la crearea superuser: {e}")
-
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
-
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ['andreeatech.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -130,7 +118,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-
+CSRF_TRUSTED_ORIGINS = ['https://andreeatech.onrender.com']
 
 
 STATIC_URL = "/static/"
@@ -141,3 +129,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
